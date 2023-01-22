@@ -1,18 +1,20 @@
-import Fastify from 'fastify';
-import cors from '@fastify/cors';
-import { PrismaClient } from '@prisma/client';
+import Fastify from "fastify";
+import cors from "@fastify/cors";
+import { PrismaClient } from "@prisma/client";
 
 const app = Fastify();
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-app.register(cors)
+app.register(cors);
 
-app.get('/', async() => {
+app.get("/", async () => {
   return prisma.habit.findMany();
 });
 
-app.listen({
-  port: 3333
-}).then(() => {
-  console.log('server listen in http://localhost:3333/')
-});
+app
+  .listen({
+    port: 3333,
+  })
+  .then(() => {
+    console.log("server listen in http://localhost:3333/");
+  });
